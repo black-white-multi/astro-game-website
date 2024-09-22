@@ -1,7 +1,23 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Page Title">
-  <button class="btn">Hello daisyUI</button>  
+  <div class="hero bg-base-200 min-h-screen">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-5xl font-bold">Number One Rich</h1>
+        <p class="mb-5">
+          Number one rich is an 8-player board game. You roll the dice to determine the number of steps you take. You can buy land and upgrade buildings. When you pass through other players' land, you must pay rent. You can get the first place by bankrupting other players.
+        </p>
+        <button class="btn btn-primary">STEAM</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer footer-center bg-base-300 text-base-content p-4">
+    <aside>
+      <p>Copyright © {new Date().getFullYear()} - All right reserved by blackwhite.fun</p>
+    </aside>
+  </footer>
 </BaseLayout>
