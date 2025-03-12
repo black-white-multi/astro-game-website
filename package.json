@@ -1,20 +1,22 @@
 {
   "name": "astro-game-website",
+  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro":"astro"
+    "astro": "astro"
   },
   "devDependencies": {
-    "astro": "^4.15.8",
-    "autoprefixer": "^10.4.20",
-    "daisyui": "^4.12.10",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.12"
+    "@tailwindcss/postcss": "^4.0.13",
+    "@tailwindcss/vite": "^4.0.13",
+    "astro": "^5.4.3",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.13"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.1"
+    "daisyui": "^5.0.3"
   }
 }
