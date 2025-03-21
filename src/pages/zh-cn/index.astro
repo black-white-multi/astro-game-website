@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page Title">
+  <div 
+    class="hero min-h-screen"
+    style="background-image: url(/number-one-rich.png);">
+    <div class="hero-content text-white text-center">
+      <div class="max-w-md">
+        <h1 class="mb-5 text-5xl font-bold color">刺激大富翁</h1>
+        <p class="mb-5">
+          《刺激大富翁》是一款需要策略、运气的桌面游戏，有8名玩家同场竞技。游戏采用即时制玩法，在游戏中通过掷骰子来移动步数，在地图上购买土地、建造豪宅，收取租金使对手破产，即可获得胜利!
+        </p>
+        <button class="btn btn-primary">
+          <a
+            href="https://store.steampowered.com/app/1455130"
+            target={"_blank"}
+          >
+          STEAM
+          </a>
+        </button>
+        <button class="btn btn-secondary">
+          <a
+            href="https://apps.apple.com/app/id1458195523"
+            target={"_blank"}
+          >
+          APPSTORE
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="flex w-full flex-col">
+    <div class="card bg-base-300 rounded-box grid place-items-center">
+      <div class="divider">联系我们</div>
+      <div class="divider">如需支持、疑问和建议，请发送电子邮件至</div>
+      <div class="divider">sprite2345@gmail.com</div>
+    </div>
+  </div>
+  <footer class="footer footer-center bg-base-300 text-base-content p-4">
+    <aside>
+      <p>ICP证:<a href="https://beian.miit.gov.cn/" target="_blank">闽</a></p>
+      <p>© {new Date().getFullYear()} blackwhite.fun 版权所有</p>
+    </aside>
+  </footer>
+</BaseLayout>
