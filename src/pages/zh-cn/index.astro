@@ -40,8 +40,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </div>
   <footer class="footer footer-center bg-base-300 text-base-content p-4">
     <aside>
-      <p><a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2025092844号-1</a></p>
-      <p>© {new Date().getFullYear()} blackwhite.fun 版权所有</p>
+        <div class="flex space-x-3">
+           <img src="/gongan_icon.png" width="20">
+           <a href="https://beian.mps.gov.cn/#/query/webSearch?code=35040002000232" rel="noreferrer" target="_blank">闽公网安备35040002000232号</a>
+
+           <a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2025092844号-1</a>
+        </div>
+        <p>© {new Date().getFullYear()} blackwhite.fun 版权所有</p>
     </aside>
   </footer>
 </BaseLayout>
