@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../zh-cn/footer.astro";
 ---
 
 <BaseLayout title="黑白多工作室">
@@ -38,15 +39,5 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <div class="divider">sprite2345@gmail.com</div>
     </div>
   </div>
-  <footer class="footer footer-center bg-base-300 text-base-content p-4">
-    <aside>
-        <div class="flex space-x-3 content-center">
-           <img src="/gongan_icon.png" width="20" height="20">
-           <a href="https://beian.mps.gov.cn/#/query/webSearch?code=35040002000232" rel="noreferrer" target="_blank">闽公网安备35040002000232号</a>
-
-           <a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2025092844号-1</a>
-        </div>
-        <p>© {new Date().getFullYear()} blackwhite.fun 版权所有</p>
-    </aside>
-  </footer>
+  <Footer />
 </BaseLayout>
