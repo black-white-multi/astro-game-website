@@ -1,3 +1,23 @@
 ---
-return Astro.redirect('/zh-cn/');
+const SUPPORTED_LANGUAGES = ['zh', 'en'];
+const DEFAULT_LANG = 'en';
+
+const getPreferredLanguage = (acceptLanguage) => {
+  const languages = acceptLanguage?.split(',') || [];
+
+  for (const lang of languages) {
+    const [code] = lang.split(';')[0].toLowerCase().split('-');
+    if (SUPPORTED_LANGUAGES.includes(code)) {
+      return code === 'zh' ? 'zh-cn' : code;
+    }
+  }
+  
+  return DEFAULT_LANG;
+};
+
+const acceptLanguage = Astro.request.headers.get('accept-language');
+
+const lang = getPreferredLanguage(acceptLanguage);
+
+return Astro.redirect(`/${lang}/`);
 ---
