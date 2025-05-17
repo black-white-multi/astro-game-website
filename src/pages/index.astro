@@ -1,23 +1,11 @@
 ---
-const SUPPORTED_LANGUAGES = ['zh', 'en'];
-const DEFAULT_LANG = 'en';
+// 获取客户端的Accept-Language头
+const preferredLang = Astro.request.headers.get('accept-language');
 
-const getPreferredLanguage = (acceptLanguage) => {
-  const languages = acceptLanguage?.split(',') || [];
+if(preferredLang != null && preferredLang.includes('zh'))
+{
+    return Astro.redirect('/zh-cn');
+}
 
-  for (const lang of languages) {
-    const [code] = lang.split(';')[0].toLowerCase().split('-');
-    if (SUPPORTED_LANGUAGES.includes(code)) {
-      return code === 'zh' ? 'zh-cn' : code;
-    }
-  }
-  
-  return DEFAULT_LANG;
-};
-
-const acceptLanguage = Astro.request.headers.get('accept-language');
-
-const lang = getPreferredLanguage(acceptLanguage);
-
-return Astro.redirect(`/${lang}/`);
+return Astro.redirect('/en');
 ---
