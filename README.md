@@ -15,13 +15,13 @@ npm run dev
 ## 升级Astro
 
 ```sh
-npm install astro@lastest
+npm install astro@latest
 ```
 
 ## 升级Tailwindcss
 
 ```sh
-npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+npm install -D tailwindcss@latest postcss autoprefixer
 
 npx tailwindcss -i ./src/tailwind.css -o ./src/tailwind.css --watch
 ```
