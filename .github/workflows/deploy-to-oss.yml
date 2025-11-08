@@ -30,7 +30,7 @@ jobs:
       run: npm run build
       
     - name: Configure Alibaba Cloud CLI
-      uses: aliyun/oss-cli@v1
+      uses: manyuanrong/setup-ossutil@v2.0.0
       with:
         endpoint: ${{ secrets.OSS_ENDPOINT }}
         access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
@@ -38,4 +38,4 @@ jobs:
         
     - name: Deploy to OSS
       run: |
-        ossutil cp -r ./dist/ oss://${{ secrets.OSS_BUCKET }} --update
+        ossutil cp -r ./dist/ oss://${{ secrets.OSS_BUCKET_NAME }} --update
