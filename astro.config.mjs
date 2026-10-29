@@ -1,11 +1,16 @@
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
+    vite: {
+        plugins: [tailwindcss()],
+    },
     i18n: {
         locales: ["en", "zh-cn"],
         defaultLocale: "zh-cn",
     },
-    site: 'https://rich-server.oss-cn-hongkong.aliyuncs.com',
+    site: 'https://blackwhite.fun',
     outDir: './dist',
     build: {
         format: 'directory'

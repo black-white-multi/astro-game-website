@@ -1,19 +1,168 @@
 @import 'tailwindcss';
-@plugin "daisyui";
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@plugin "daisyui" {
+  themes: dark --default;
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+@theme {
+  --color-ink: #08080a;
+  --color-ink-soft: #0e0e12;
+  --color-paper: #f6f4ee;
+  --color-mute: #9d9ba6;
+  --color-gold: #ffc93c;
+  --color-lime: #c8ff4d;
+
+  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", system-ui, sans-serif;
+  --font-display: "Helvetica Neue", "Arial Black", "PingFang SC",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #08080a;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* 大标题描边字 */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in oklab, var(--color-paper) 40%, transparent);
+  }
+
+  /* 小标签 */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-gold);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 1rem 1.9rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cta-primary {
+    background: var(--color-gold);
+    color: #08080a;
+  }
+
+  .cta-primary:hover {
+    background: var(--color-lime);
+    box-shadow: 0 0 44px -10px color-mix(in oklab, var(--color-lime) 70%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .cta-outline {
+    border: 1px solid color-mix(in oklab, var(--color-paper) 25%, transparent);
+    color: var(--color-paper);
+  }
+
+  .cta-outline:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+
+  /* 细网格纹理 */
+  .grid-lines {
+    background-image: linear-gradient(
+        to right,
+        color-mix(in oklab, var(--color-paper) 8%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-paper) 8%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 5rem 5rem;
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* 顶栏滚动后或移动菜单展开时的玻璃态 */
+#site-header[data-scrolled="true"],
+#site-header:has(#mobile-menu:not(.hidden)) {
+  background: color-mix(in oklab, var(--color-ink) 78%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid color-mix(in oklab, var(--color-paper) 10%, transparent);
+}
+
+/* 滚动淡入（仅在有 JS 时生效，保证无 JS 也能看到内容） */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cta,
+  .cta-primary:hover,
+  .cta-outline:hover {
+    transition: none;
+    transform: none;
   }
 }

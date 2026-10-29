@@ -1,11 +1,29 @@
 ---
-// 获取客户端的Accept-Language头
-const preferredLang = Astro.request.headers.get('accept-language');
-
-if(preferredLang != null && preferredLang.includes('zh'))
-{
-    return Astro.redirect('/zh-cn');
-}
-
-return Astro.redirect('/en');
+// 静态构建无法读取 Accept-Language，改为在客户端按浏览器语言跳转
 ---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>黑白多工作室 · Black White Studio</title>
+    <meta name="robots" content="noindex" />
+    <script is:inline>
+      (function () {
+        var langs = navigator.languages || [navigator.language || "en"];
+        var lang = (langs[0] || "").toLowerCase();
+        var target = lang.indexOf("zh") === 0 ? "/zh-cn/" : "/en/";
+        window.location.replace(target);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0;url=/zh-cn/" /></noscript>
+  </head>
+  <body>
+    <p>
+      <a href="/zh-cn/">中文</a>
+      <span>·</span>
+      <a href="/en/">English</a>
+    </p>
+  </body>
+</html>
