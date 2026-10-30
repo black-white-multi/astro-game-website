@@ -208,7 +208,7 @@ export const content: Record<Lang, Content> = {
     },
     about: {
       label: "03 / About us",
-      heading: "Between black and white,\nwe make games worth playing.",
+      heading: "We make games worth playing.",
       body: "Black White Studio is an independent studio focused on multiplayer games that are light, easy to pick up and hard to put down. We believe a great game doesn't need a long tutorial — the rules read at a glance, and the outcome comes down to how you play.",
       quote: "The rules read at a glance. The outcome comes down to how you play.",
     },
